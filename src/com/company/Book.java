@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Objects;
+
 public class Book {
         private final String bookName;
         private final Author author;
@@ -29,5 +31,17 @@ public class Book {
                 ", author - " + author +
                 ", year published " + year +
                 '}';
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(bookName, book.bookName) && Objects.equals(author, book.author) && year == book.year;
+
+    }
+
+    public int hashCode() {
+        return Objects.hash(bookName, author, year);
     }
 }
